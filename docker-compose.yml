@@ -1,0 +1,19 @@
+version: '2.2'
+
+services:
+  dockerrun:
+    build:
+      context: .
+    tty: true
+    network_mode: "host"
+    ports:
+      - '5037:5037'
+    volumes:
+      # change dockerrun to your project name
+      - ./:/dockerRUn/:delegated
+      - notused:/./node_modules
+    healthcheck:
+      disable: true
+    entrypoint: [ "bash", "-c", "npm run android"]
+volumes:
+  notused:
